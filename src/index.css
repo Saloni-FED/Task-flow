@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Palanquin+Dark:wght@400;500;600&family=Rubik+Bubbles&family=Work+Sans&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  background-color: #f6f6f9;
+  height:100vw;
+  width:100vw;
+  box-sizing : border-box;
+  outline: none;
+  appearance: none;
+  user-select: none;
+  font-family:font-body;
+}
+
+@layer components {
+
+  .flex-row{
+    @apply flex gap-3 justify-center items-center 
+  }
+  .transition-y{
+    @apply transition transform duration-150 cursor-pointer
+  }
+  .tasks_input{
+    @apply outline-none p-2 text-sm border-b-2 shadow-sm shadow-white rounded bg-custom_black
+  }
+  /* .task_creation{
+    @apply rounded-sm  bg-slate-900 font-body shadow-md shadow-white
+  } */
+  .input_div{
+    @apply w-full border-b-2 border-l_green;
+  }
+  .input{
+    @apply w-full px-5 py-2 rounded-full outline-none bg-input text-heading font-bold
+  }
+}
