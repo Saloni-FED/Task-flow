@@ -16,7 +16,7 @@ API.interceptors.request.use((req) => {
 
 // Profile
 export const profile = (formData) =>
-  API.patch("/profile/update", formData, {
+  API.put("/profile/update", formData, {
     header: {
       "Content-Type": "multipart/form-data",
     },
@@ -33,10 +33,10 @@ export const deleteTask = (_id) => API.delete(`/${_id}`);
 
 // Update Task
 export const updateTask = (_id, updateTaskData) =>
-  API.patch(`/${_id}`, updateTaskData);
+  API.put(`/${_id}`, updateTaskData);
 
 // Gettin task BY User Id
-export const getByTaskId = (_id, updateTask) => API.get(`${_id}`);
+export const getByTaskId = (_id) => API.get(`${_id}`);
 
 // Deleted history
 export const createHistory = (history) => API.post("/create/history", history);

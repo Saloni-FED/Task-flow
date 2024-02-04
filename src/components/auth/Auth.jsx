@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { signIn, signUp } from "../../api";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -52,7 +52,7 @@ const Auth = () => {
         <div className="relative">
           {" "}
           <div>
-            <img src={taskImage} alt="" width="100" hight="100" />
+            <img src={taskImage} alt="" width="100" height="100" />
           </div>
           <h1 className="text-center text-3xl text-heading font-bold absolute top-2 left-16">
             {isSignUp ? "Welcome!" : "Welcome back!"}
@@ -124,7 +124,7 @@ const Auth = () => {
 
           <button
             className=" w-72 px-2 py-1 text-bold text-2xl mt-5 cursor-pointer bg-heading text-white rounded-full"
-            disable={isSubmitting}
+            disabled={isSubmitting}
           >
             {isSubmitting
               ? "Submitting..."
