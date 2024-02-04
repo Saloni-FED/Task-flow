@@ -13,7 +13,7 @@ const AllTaskMain = ({ taskName, date, dueDate, priority, status, _id }) => {
   const handleDelete = async () => {
     await createHistory({ taskName, date, dueDate, priority, status, _id, })
     const { data } = await deleteTask(_id);
-    // window.location.reload(true);
+    window.location.reload(true);
     console.log(data);
   };
 
