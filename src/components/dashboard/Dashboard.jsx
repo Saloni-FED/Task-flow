@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import { useState} from "react";
 import {
   Line,
   LineChart,
@@ -11,7 +11,7 @@ import {
 import useTask from "../../hooks/useTask";
 
 const Dashboard = () => {
-  const [loading , setLoading ] = useState(true)
+  // const [loading , setLoading ] = useState(true)
     const [tasks, setTasks] = useTask("All");
     const totalTask = tasks.length;
 

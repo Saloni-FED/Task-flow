@@ -25,7 +25,7 @@ const { image } = profile
                <li className="">About</li>
             </NavLink>
            
-            <li className="buttons rounded-full w-11 h-11 "><img src={image} alt="" /></li>
+            <li className="buttons rounded-full w-11 h-11 "><img src={image} alt="" className="w-11 h-11 rounded-full"/></li>
           </ul>
         </nav>
         <div className="flex max-sm:flex-col">
