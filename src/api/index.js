@@ -16,8 +16,8 @@ API.interceptors.request.use((req) => {
 
 // Profile
 export const profile = (formData) =>
-  API.put("/profile/update", formData, {
-    header: {
+  API.post("/profile/update", formData, {
+    headers: {
       "Content-Type": "multipart/form-data",
     },
   });

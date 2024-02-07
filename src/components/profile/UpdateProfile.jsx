@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import  { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { CgProfile } from "react-icons/cg";
 import { profile } from "../../api";
 import { ProfileContext } from "../../context/profile/ProfileContext";
 import { useNavigate } from "react-router-dom"
-
+import Loader from "../../../src/Loader"
 const UpdateProfile = () => {
   const [image, setImage] = useState(null);
    const { setProfile } = useContext(ProfileContext)
@@ -14,7 +14,7 @@ const UpdateProfile = () => {
     register,
     handleSubmit,
     setValue, // Add this
-    formState: { errors, isSubmitting },
+    formState: {  isSubmitting },
   } = useForm();
 
   const handleImage = () => {
@@ -31,15 +31,19 @@ const UpdateProfile = () => {
   // Profile form Submit
   const onSubmit = async (profileData) => {
     const { username, bio, image } = profileData;
-    
-    const formData = new FormData();
-    formData.append("username", username);
-    formData.append("bio", bio);
-    formData.append("image", image);
-    const { data }= await profile(formData)
-    console.log(data)
-    setProfile(data.user)
-    navigate('/main/profile')
+    try {
+      const formData = new FormData();
+      formData.append("username", username);
+      formData.append("bio", bio);
+      formData.append("image", image);
+      const { data }= await profile(formData)
+      console.log(data)
+      setProfile(data.user)
+      navigate('/main/profile')
+    } catch (error) {
+      console.log(error)
+    }
+   
   };
 
  
@@ -77,7 +81,9 @@ const UpdateProfile = () => {
               })}
             />
           </div>
-          <button className="w-full flex justify-center items-center gap-1 border  rounded-full px-4 py-2 bg-heading text-white mt-5">Create</button>
+          <button className="w-full flex justify-center items-center gap-1 border  rounded-full px-4 py-2 bg-heading text-white mt-5"
+           disabled={isSubmitting}
+          >{isSubmitting ? <Loader/> : "Create"}</button>
         </div>
         <div className="flex" onClick={handleImage}>
           <div className="bg-yellow h-52 w-52 rounded-full relative bg-heading">
