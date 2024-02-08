@@ -40,7 +40,7 @@ const UpdateProfile = () => {
       console.log(data);
       setProfile(data.user);
       navigate("/main/profile");
-      toast.success("Profile page created successfully!")
+      toast.success("Profile page created successfully!");
     } catch (error) {
       console.log(error);
     }
@@ -83,7 +83,7 @@ const UpdateProfile = () => {
             className="w-full flex justify-center items-center gap-1 border  rounded-full px-4 py-2 bg-heading text-white mt-5"
             disabled={isSubmitting}
           >
-            {isSubmitting ? <ClipLoader color={"#fff"} size={50} /> : "Create"}
+            {isSubmitting ? <ClipLoader color={"#fff"} size={10} /> : "Create"}
           </button>
         </div>
         <div className="flex cursor-pointer" onClick={handleImage}>
