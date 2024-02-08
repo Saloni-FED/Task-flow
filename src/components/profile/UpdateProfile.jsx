@@ -1,20 +1,20 @@
-import  { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { CgProfile } from "react-icons/cg";
 import { profile } from "../../api";
 import { ProfileContext } from "../../context/profile/ProfileContext";
-import { useNavigate } from "react-router-dom"
-import Loader from "../../../src/Loader"
+import { useNavigate } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
+import toast from "react-hot-toast";
 const UpdateProfile = () => {
   const [image, setImage] = useState(null);
-   const { setProfile } = useContext(ProfileContext)
-   const navigate = useNavigate()
-  //  console.log(profile)
+  const { setProfile } = useContext(ProfileContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     setValue, // Add this
-    formState: {  isSubmitting },
+    formState: { isSubmitting },
   } = useForm();
 
   const handleImage = () => {
@@ -36,17 +36,15 @@ const UpdateProfile = () => {
       formData.append("username", username);
       formData.append("bio", bio);
       formData.append("image", image);
-      const { data }= await profile(formData)
-      console.log(data)
-      setProfile(data.user)
-      navigate('/main/profile')
+      const { data } = await profile(formData);
+      console.log(data);
+      setProfile(data.user);
+      navigate("/main/profile");
+      toast.success("Profile page created successfully!")
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-   
   };
-
- 
 
   return (
     <div className="w-full h-full border flex justify-center  text-white font-body">
@@ -81,11 +79,14 @@ const UpdateProfile = () => {
               })}
             />
           </div>
-          <button className="w-full flex justify-center items-center gap-1 border  rounded-full px-4 py-2 bg-heading text-white mt-5"
-           disabled={isSubmitting}
-          >{isSubmitting ? <Loader/> : "Create"}</button>
+          <button
+            className="w-full flex justify-center items-center gap-1 border  rounded-full px-4 py-2 bg-heading text-white mt-5"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? <ClipLoader color={"#fff"} size={50} /> : "Create"}
+          </button>
         </div>
-        <div className="flex" onClick={handleImage}>
+        <div className="flex cursor-pointer" onClick={handleImage}>
           <div className="bg-yellow h-52 w-52 rounded-full relative bg-heading">
             {image === null ? (
               <div className="absolute top-10 left-10 text-9xl">

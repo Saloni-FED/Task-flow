@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import image_default from "../../assets/Component 3.png";
 import { IoIosLogOut } from "react-icons/io";
 import { Link } from "react-router-dom";
@@ -51,7 +51,7 @@ const Profile = () => {
       </div>
       <div className="mt-7 flex gap-7 px-5 py-7 border shadow-xl shadow-main rounded-[2rem] bg-heading text-white">
         <div>
-          <p className=" text-sm font-bold">amazing!</p>
+          <p className=" text-sm font-bold">{totalTask === 0 ? "Oops! please complete your task" : "amazing!"}</p>
           <h1 className=" text-xl font-bold mt-4">
             You Have completed {totalTask} task!
           </h1>

@@ -38,6 +38,7 @@ const Auth = () => {
       }
     } catch (error) {
       console.log(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message)
       // if (error.response.status === 404) {
       //   toast.error("Email or password is incorrect");
       // } else {
