@@ -48,7 +48,7 @@ const Auth = () => {
   };
 
   return (
-    <div className=" flex flex-col items-center   h-screen w-screen bg-white">
+    <div className=" flex flex-col items-center   h-screen w-screen ">
       <div className=" w-fit  p-10 ">
         <div className="relative">
           {" "}
