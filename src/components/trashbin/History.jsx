@@ -1,8 +1,10 @@
+// History.js
 import React, { useEffect, useState } from "react";
 import { getHistory as fetchHistory } from "../../api";
 import TrashData from "./TrashData";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
+
 const History = () => {
   const [deletedhistory, setDeletedHistory] = useState([]);
 
@@ -24,7 +26,6 @@ const History = () => {
     }
   };
 
-  // UseEffect hook to fetch deleted history initially
   useEffect(() => {
     fetchDeletedHistory();
   }, []);
@@ -35,6 +36,7 @@ const History = () => {
     // Fetch updated deleted history after restoration
     fetchDeletedHistory();
   };
+
   if (deletedhistory.length === 0)
     return (
       <div className="w-full text-center text-heading font-body mt-5 text-lg font-bold">

@@ -1,13 +1,12 @@
-import React from "react";
 import { CgMenuBoxed } from "react-icons/cg";
 import { MdCreate } from "react-icons/md";
 import { RiDashboard2Fill } from "react-icons/ri";
 import { FaTasks } from "react-icons/fa";
-import { GrUpdate } from "react-icons/gr";
 import { useState } from "react";
 import { IoIosLogOut } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { MdOutlineAutoDelete } from "react-icons/md";
 const NavLinks = () => {
   const [isShow, setIsShow] = useState(true);
   const navigate = useNavigate();
@@ -93,7 +92,7 @@ const NavLinks = () => {
                 <li className="flex-row max-sm:flex-col max-sm:text-2xl max-sm:gap-1 transition-y hover:translate-x-1   ">
                   <p className="max-sm:hidden">Trash Bin </p>
                   <span>
-                    <FaTasks />
+                  <MdOutlineAutoDelete />
                   </span>
                 </li>
               </NavLink>
@@ -101,7 +100,7 @@ const NavLinks = () => {
                 <p className="max-sm:hidden" onClick={handleLogout}>
                   log out
                 </p>
-                <IoIosLogOut className="text-2xl"/>
+                <IoIosLogOut className="text-2xl" onClick={handleLogout}/>
               </li>
             
             </ul>

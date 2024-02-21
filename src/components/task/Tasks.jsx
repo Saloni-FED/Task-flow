@@ -1,8 +1,8 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import { CiSquarePlus } from "react-icons/ci";
 import { createTask } from "../../api";
-import toast from "react-hot-toast"
+import toast from "react-hot-toast";
+
 const Tasks = () => {
   const {
     register,
@@ -10,7 +10,7 @@ const Tasks = () => {
     reset,
     formState: { errors, isSubmitting },
   } = useForm();
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toISOString().split("T")[0];
   const onSubmit = async (taskData) => {
     console.log("clicked", taskData);
     try {
@@ -20,25 +20,25 @@ const Tasks = () => {
       console.log(resData.data);
       // useNavigate("/getalltask");
       reset();
-      toast.success("Task Created Successfully")
+      toast.success("Task Created Successfully");
     } catch (error) {
       console.log(error);
-      toast.error("Not created try to Sign in or or try to create again")
+      toast.error("Not created try to Sign in or or try to create again");
     }
   };
 
   return (
     <div className="border z-50 w-full max-sm:h-full h-screen truncate flex flex-col  items-center  font-body relative">
       <form
-        className="flex flex-col gap-4  w-fit h-fit max-sm:w-screen truncate  font-body p-5"
+        className="flex flex-col gap-4  w-fit h-fit max-sm:w-full truncate  font-body p-5"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="relative mb-3 max-sm:hidden">
           <div className="w-11 h-11 rounded-full bg-[#d1d0f9] absolute top-0 left-24"></div>
-           <div className="w-11 h-11 rounded-full bg-[#d1d0f9] absolute top-0 left-32"></div>
+          <div className="w-11 h-11 rounded-full bg-[#d1d0f9] absolute top-0 left-32"></div>
           <div className="w-11 h-11 rounded-full bg-[#d1d0f9] absolute top-0 left-40"></div>
-          <div className="w-11 h-11 rounded-full bg-[#d1d0f9] absolute top-0 left-48"></div> 
-          <div className="w-11 h-11 rounded-full bg-[#d1d0f9] absolute top-0 left-56"></div> 
+          <div className="w-11 h-11 rounded-full bg-[#d1d0f9] absolute top-0 left-48"></div>
+          <div className="w-11 h-11 rounded-full bg-[#d1d0f9] absolute top-0 left-56"></div>
         </div>
 
         <div className="flex flex-col gap-1 mt-5 ">
@@ -68,24 +68,27 @@ const Tasks = () => {
           <div className="text-xl text-heading">
             <h1>Priority:-</h1>
           </div>
-          <div className="flex gap-10 text-[#9C98A1] font-bold ">
-            <label htmlFor="">Low : </label>
+          <div className="flex gap-4 text-[#9C98A1] font-bold ">
+            <label htmlFor="low">Low : </label>
             <input
               type="radio"
+              id="low"
               name="priority"
               value="low"
               {...register("priority")}
             />
-            <label htmlFor="">Medium : </label>
+            <label htmlFor="medium">Medium : </label>
             <input
               type="radio"
+              id="medium"
               name="priority"
               value="medium"
               {...register("priority")}
             />
-            <label htmlFor="">High : </label>
+            <label htmlFor="high">High : </label>
             <input
               type="radio"
+              id="high"
               name="priority"
               value="high"
               {...register("priority")}

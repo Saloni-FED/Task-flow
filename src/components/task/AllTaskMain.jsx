@@ -14,12 +14,11 @@ const AllTaskMain = ({ taskName, date, dueDate, priority, status, _id }) => {
     await createHistory({ taskName, date, dueDate, priority, status, _id, })
     const { data } = await deleteTask(_id);
     window.location.reload(true);
-    console.log(data);
+    // console.log(data);
   };
 
   console.log(new Date(date).getMonth())
   const handleEdit = () => {
-    console.log("edit");
     navigate(`/main/${_id}`);
   };
 
