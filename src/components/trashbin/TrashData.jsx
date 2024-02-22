@@ -1,5 +1,4 @@
-// TrashData.js
-import React, { useCallback, useState } from "react";
+import  { useCallback, useState } from "react";
 import { MdRestore } from "react-icons/md";
 import { restoreData } from "../../api";
 
@@ -16,7 +15,6 @@ const TrashData = ({
     try {
       await restoreData({ taskId });
       setRestored(true);
-      // Call the restoreSuccessCallback function passed from History
       restoreSuccessCallback(taskId);
     } catch (error) {
       console.error("Error while restoring data:", error);

@@ -1,3 +1,4 @@
+// GetAllTask.js
 import { useState, useEffect } from "react";
 import useTask from "../../hooks/useTask";
 import AllTaskMain from "./AllTaskMain";
@@ -8,18 +9,25 @@ import Loader from "../../Loader";
 
 const GetAllTask = () => {
   const [filterState, setFilterState] = useState("All");
-  const [isLoading, setIsLoading] = useState(false);
-  const [allTask, setAllTask] = useTask(filterState);
-  // console.log(allTask)
-  useEffect(() => {
-    setIsLoading(true);
-  }, [filterState]);
+  // const [isLoading, setIsLoading] = useState(true);
+  const [isDeleted, setIsDeleted] = useState(false);
+  const [allTask, setAllTask, isLoading, setIsLoading] = useTask(filterState, isDeleted);
 
-  useEffect(() => {
-    if (allTask.length >= 0) {
-      setIsLoading(false);
-    }
-  }, [allTask]);
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   // Fetch data here
+  // }, [filterState, isDeleted]);
+
+  // useEffect(() => {
+  //   console.log("the task after re redndering", allTask, allTask.length);
+  //   if (allTask.length >= 0 || isDeleted) {
+  //     setIsLoading(false);
+  //   }
+  // }, [allTask, isDeleted]);
+
+  const handleTaskDeletion = () => {
+    setIsDeleted(!isDeleted);
+  };
 
   return (
     <div className="ml-2 max-md:w-full max-md:h-fit w-full">
@@ -46,17 +54,23 @@ const GetAllTask = () => {
           </button>
         </Link>
       </div>
-      {isLoading ? ( 
+      {isLoading ? (
         <Loader />
       ) : allTask.length !== 0 ? (
         <div className="grid grid-cols-[repeat(3,1fr)] max-md:grid-cols-1 gap-2 mx-2 max-sm:mx-0 overflow-none">
           {allTask.map((taskItems) => (
-            <AllTaskMain key={taskItems._id} {...taskItems} />
+            <AllTaskMain
+              key={taskItems._id}
+              {...taskItems}
+              handleTaskDeletion={handleTaskDeletion}
+            />
           ))}
         </div>
       ) : (
         <div className="text-heading text-center font-body text-xl font-bold max-sm:py-10">
-          <h1>Oops! No Task is Available</h1>
+          <h1>
+            {isDeleted ? "Oops! No Task Found" : "Oops! No Task is Available"}
+          </h1>
           <Link to="/main/create">
             <h2 className="flex justify-center text-slate-400 mt-4 text-lg">
               <FaArrowLeft className="hover:-translate-x-2 transition-transform duration-300" />

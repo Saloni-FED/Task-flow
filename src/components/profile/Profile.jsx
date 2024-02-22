@@ -53,7 +53,7 @@ const Profile = () => {
         <div>
           <p className=" text-sm font-bold">{totalTask === 0 ? "Oops! please complete your task" : "amazing!"}</p>
           <h1 className=" text-xl font-bold mt-4">
-            You Have completed {totalTask} task!
+            You Have Created {totalTask} task!
           </h1>
         </div>
         <div>
