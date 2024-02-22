@@ -13,18 +13,7 @@ const GetAllTask = () => {
   const [isDeleted, setIsDeleted] = useState(false);
   const [allTask, setAllTask, isLoading, setIsLoading] = useTask(filterState, isDeleted);
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   // Fetch data here
-  // }, [filterState, isDeleted]);
-
-  // useEffect(() => {
-  //   console.log("the task after re redndering", allTask, allTask.length);
-  //   if (allTask.length >= 0 || isDeleted) {
-  //     setIsLoading(false);
-  //   }
-  // }, [allTask, isDeleted]);
-
+ 
   const handleTaskDeletion = () => {
     setIsDeleted(!isDeleted);
   };
@@ -35,7 +24,7 @@ const GetAllTask = () => {
         <select
           name="sort"
           id="sort_element"
-          className="outline-none rounded-full border-b px-2 py-1 bg-input text-heading hover:bg-purple-200"
+          className="outline-none rounded-full border-b px-2 py-1 bg-input text-heading hover:bg-purple- cursor-pointer"
           onChange={(e) => {
             setFilterState(e.target.value);
           }}

@@ -52,7 +52,7 @@ const AllTaskMain = ({
 
   return (
     <div className="border p-5 font-body text-heading rounded shadow-xl shadow-main h-fit max-md:w-full">
-      <div className="flex justify-between">
+      <div className="flex justify-between cursor-pointer">
         <h1
           className={`${
             status === "pending"

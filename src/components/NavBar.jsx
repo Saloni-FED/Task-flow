@@ -21,7 +21,7 @@ const NavLinks = () => {
   return (
     <>
       <div className=" px-7 ">
-        <div className="p-3 max-sm:p-1 w-full max-sm:hidden ">
+        <div className="p-3 max-sm:p-1 w-full max-sm:hidden cursor-pointer">
           <CgMenuBoxed
             className="text-5xl max-sm:text-xl font-semibold text-heading"
             onClick={handleClick}

@@ -23,7 +23,7 @@ const TrashData = ({
 
   return (
     <div
-      className={`transition-all duration-500 ${
+      className={`transition-all duration-500 px-3 ${
         restored ? "opacity-0 scale-0" : "opacity-100 scale-100"
       }`}
     >
@@ -32,12 +32,12 @@ const TrashData = ({
           {index}
         </h1>
         <h1 className="text-slate-500 font-bold max-md:text-sm">{taskName}</h1>
-        <h1 className="text-red-500">
+        <h1 className="text-red-500 max-md:text-sm">
           <span>{`${new Date(deletionTimestamp).toLocaleDateString()}`}</span>
           <br />
           <span>{`${new Date(deletionTimestamp).toLocaleTimeString()}`}</span>
         </h1>
-        <h1 className="text-2xl text-gray-700 font-bold">
+        <h1 className="text-2xl text-gray-700 font-bold cursor-pointer">
           <MdRestore onClick={restore} />
         </h1>
       </div>

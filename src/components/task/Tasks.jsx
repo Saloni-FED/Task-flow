@@ -28,17 +28,17 @@ const Tasks = () => {
   };
 
   return (
-    <div className="border z-50 w-full max-sm:h-full h-screen truncate flex flex-col  items-center  font-body relative">
+    <div className="border z-50 w-full max-sm:h-full  truncate flex flex-col  items-center  font-body relative max-md:screen-full">
       <form
         className="flex flex-col gap-4  w-fit h-fit max-sm:w-full truncate  font-body p-5"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="relative mb-3 max-sm:hidden">
+          <div className="w-11 h-11 rounded-full bg-[#d1d0f9] absolute top-0 left-16"></div>
           <div className="w-11 h-11 rounded-full bg-[#d1d0f9] absolute top-0 left-24"></div>
           <div className="w-11 h-11 rounded-full bg-[#d1d0f9] absolute top-0 left-32"></div>
           <div className="w-11 h-11 rounded-full bg-[#d1d0f9] absolute top-0 left-40"></div>
           <div className="w-11 h-11 rounded-full bg-[#d1d0f9] absolute top-0 left-48"></div>
-          <div className="w-11 h-11 rounded-full bg-[#d1d0f9] absolute top-0 left-56"></div>
         </div>
 
         <div className="flex flex-col gap-1 mt-5 ">
