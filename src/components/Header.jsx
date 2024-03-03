@@ -10,7 +10,7 @@ const { image } = profile
     <>
       <header>
         <nav className=" w-full flex justify-between md:p-5 p-2 gap-5 max-sm:text-sm max-sm:items-center border shadow-xl shadow-main">
-          <h1 className="mt-1 font-logo text-3xl font-extrabold text-heading">TaskFlow</h1>
+          <h1 className="mt-1 font-logo text-3xl max-sm:text-xl font-extrabold text-heading">TaskFlow</h1>
           <ul className="flex items-center  gap-5 font-body font-semibold  max-sm:top-20   max-sm:items-start text-heading text-lg max-sm:mt-6">
             <NavLink to="/main/profile" className={({isActive})=>{
               console.log(isActive)
