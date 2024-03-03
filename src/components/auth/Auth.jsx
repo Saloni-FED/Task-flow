@@ -159,11 +159,15 @@ const Auth = () => {
           buttonText="Sign up with Google"
           onSuccess={async (response) => {
             console.log(response);
-            const { data } = await googleSignUp(response.credential);
-            const token = data.token;
-            toast.success("Registered Successfully");
-            navigate("main/create");
-            localStorage.setItem("profile", JSON.stringify(token));
+            try {
+              const { data } = await googleSignUp(response.credential);
+              const token = data.token;
+              toast.success("Registered Successfully");
+              navigate("main/create");
+              localStorage.setItem("profile", JSON.stringify(token));
+            } catch (error) {
+              toast.error(error?.response?.data?.message);
+            }
           }}
           onError={(error) => console.log(error)}
         />
@@ -174,13 +178,17 @@ const Auth = () => {
           )}
           buttonText="Sign in with Google"
           onSuccess={async (response) => {
-            const { data } = await googleSignIn(response.credential);
-            console.log(data);
-            // console.log(response);
-            const token = data.token;
-            toast.success("Registered Successfully");
-            navigate("main/create");
-            localStorage.setItem("profile", JSON.stringify(token));
+            try {
+              const { data } = await googleSignIn(response.credential);
+              console.log(data);
+              // console.log(response);
+              const token = data.token;
+              toast.success("Registered Successfully");
+              navigate("main/create");
+              localStorage.setItem("profile", JSON.stringify(token));
+            } catch (error) {
+              toast.error(error?.response?.data?.message);
+            }
           }}
           onError={(error) => console.log(error)}
         />
