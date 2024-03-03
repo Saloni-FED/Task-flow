@@ -7,6 +7,7 @@ import { IoIosLogOut } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineAutoDelete } from "react-icons/md";
+import { googleLogout } from '@react-oauth/google';
 const NavLinks = () => {
   const [isShow, setIsShow] = useState(true);
   const navigate = useNavigate();
@@ -15,8 +16,11 @@ const NavLinks = () => {
   };
   const handleLogout = () => {
     console.log("Log out");
+    googleLogout()
+    console.log("log out using goole")
     localStorage.removeItem("profile");
     navigate("/");
+    // googleLogout()
   };
   return (
     <>

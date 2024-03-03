@@ -1,12 +1,14 @@
 // import React from "react";
-import { signIn, signUp } from "../../api";
+import { signIn, signUp, googleSignUp, googleSignIn } from "../../api";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import taskImage from "../../assets/Component 3.png";
+import { GoogleLogin } from "@react-oauth/google";
 const Auth = () => {
   const [isSignUp, setIsSignup] = useState(false);
+  // const [res, setRes] = useState("");
   const navigate = useNavigate();
   const {
     register,
@@ -20,11 +22,11 @@ const Auth = () => {
 
   const onSubmit = async (formData) => {
     console.log("form submitted");
-    console.log(formData)
+    console.log(formData);
     try {
       if (isSignUp) {
         const { data } = await signUp(formData);
-        console.log(data)
+        console.log(data);
         const token = data.token;
         toast.success("Registered Successfully");
         navigate("main/create");
@@ -38,15 +40,18 @@ const Auth = () => {
       }
     } catch (error) {
       console.log(error?.response?.data?.message);
-      toast.error(error?.response?.data?.message)
-      // if (error.response.status === 404) {
-      //   toast.error("Email or password is incorrect");
-      // } else {
-      //   toast.error("An error occurred, please try again later");
-      // }
+      toast.error(error?.response?.data?.message);
     }
   };
 
+  // const extractAuthorizationCode = (credential) => {
+  //   console.log(credential, "credential");
+  //   const parts = credential.split(".");
+  //   console.log(parts, "parts");
+  //   const payload = JSON.parse(atob(parts[1]));
+  //   console.log(payload, "Payload");
+  //   return payload.code;
+  // };
   return (
     <div className=" flex flex-col items-center   h-screen w-screen ">
       <div className=" w-fit  p-10 ">
@@ -144,6 +149,42 @@ const Auth = () => {
           {isSignUp ? "Sign in" : "Register "}
         </span>
       </h2>
+      <hr />
+      <h1 className="mx-3">Or </h1>
+      {isSignUp ? (
+        <GoogleLogin
+          render={(renderProps) => (
+            <button onClick={renderProps.onClick}>Sign up with Google</button>
+          )}
+          buttonText="Sign up with Google"
+          onSuccess={async (response) => {
+            console.log(response);
+            const { data } = await googleSignUp(response.credential);
+            const token = data.token;
+            toast.success("Registered Successfully");
+            navigate("main/create");
+            localStorage.setItem("profile", JSON.stringify(token));
+          }}
+          onError={(error) => console.log(error)}
+        />
+      ) : (
+        <GoogleLogin
+          render={(renderProps) => (
+            <button onClick={renderProps.onClick}>Sign in with Google</button>
+          )}
+          buttonText="Sign in with Google"
+          onSuccess={async (response) => {
+            const { data } = await googleSignIn(response.credential);
+            console.log(data);
+            // console.log(response);
+            const token = data.token;
+            toast.success("Registered Successfully");
+            navigate("main/create");
+            localStorage.setItem("profile", JSON.stringify(token));
+          }}
+          onError={(error) => console.log(error)}
+        />
+      )}
     </div>
   );
 };

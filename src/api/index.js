@@ -2,7 +2,12 @@ import axios from "axios";
 const API = axios.create({ baseURL: import.meta.env.VITE_APP_URL });
 export const signUp = (formData) => API.post(`/signup`, formData, {});
 export const signIn = (formData) => API.post(`/signin`, formData);
+export const googleSignUp = (credential) =>
+  API.post("/signup/google", { accessToken: credential });
+export const googleSignIn = (credential) =>
+  API.post("/signin/google", { accessToken: credential });
 
+  
 // Authorization
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
