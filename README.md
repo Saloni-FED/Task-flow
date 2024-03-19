@@ -24,6 +24,7 @@ Demo-: https://taskflowmern.netlify.app/
 - Implemented Profile page for users.
 - Added Protected Routes.
 - Implemented Lazy Loading in order to optimized App.
+- Implemented Google Auth
 
 
 
