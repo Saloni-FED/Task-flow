@@ -30,7 +30,7 @@ const Tasks = () => {
   return (
     <div className="shadow-md h-screen z-50 w-full max-sm:h-full  truncate flex flex-col  items-center  font-body relative max-md:screen-full">
       <form
-        className="flex flex-col gap-4  w-fit h-fit max-sm:w-full truncate lg:mt-10  font-body p-5 shadow-lg"
+        className="flex flex-col gap-4   max-sm:w-full truncate lg:mt-10  font-body p-5 shadow-lg"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="relative mb-3 max-sm:hidden">
@@ -45,7 +45,7 @@ const Tasks = () => {
           <label className="text-xl text-heading">Task </label>
           <input
             type="text"
-            className="px-8 py-2  rounded-full border-2 border-heading outline-none text-heading font-bold"
+            className="px-4 py-2  rounded-full border-2 border-heading outline-none text-heading font-bold"
             {...register("taskName", {
               required: {
                 value: true,
@@ -60,7 +60,7 @@ const Tasks = () => {
           <input
             type="date"
             min={today}
-            className="px-8 py-2  rounded-full border-2 border-heading outline-none text-heading font-bold"
+            className="px-4 py-2  rounded-full border-2 border-heading outline-none text-heading font-bold"
             {...register("dueDate", { required: true })}
           />
         </div>
