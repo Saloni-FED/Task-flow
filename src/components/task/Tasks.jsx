@@ -30,7 +30,7 @@ const Tasks = () => {
   return (
     <div className="shadow-md h-screen z-50 w-full max-sm:h-full  truncate flex flex-col  items-center  font-body relative max-md:screen-full">
       <form
-        className="flex flex-col gap-4   max-sm:w-full truncate lg:mt-10  font-body p-5 shadow-lg"
+        className="flex flex-col gap-4   max-sm:w-full truncate lg:mt-20  font-body p-5 shadow-lg rounded  px-5"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="relative mb-3 max-sm:hidden">
